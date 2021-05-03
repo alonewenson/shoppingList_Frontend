@@ -36,4 +36,3 @@ export default connect(
   null,
   { addTodo }
 )(AddTodo);
-// export default AddTodo;

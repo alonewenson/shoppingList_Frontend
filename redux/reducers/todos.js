@@ -38,7 +38,7 @@ export default function(state = initialState, action) {
       const { id } = action.payload;
 
       var newAllIds = state.allIds;
-      var index = newAllIds.indexOf(id)
+      const index = newAllIds.indexOf(id)
       if (index !== -1) {
         newAllIds.splice(index, 1);
       }
@@ -65,8 +65,6 @@ export default function(state = initialState, action) {
         }
       };
     }
-  
-
     
     default:
       return state;

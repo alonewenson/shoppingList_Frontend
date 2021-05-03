@@ -5,11 +5,11 @@ import { setTodoImg } from "../redux/actions";
 import { getTodos } from "../redux/selectors";
 import '../styles.css';
 
-const PIXABAY_PLUS_SIGN = 'https://cdn.pixabay.com/photo/2016/12/21/17/11/signe-1923369_960_720.png';
+const DEFAULT_IMG = 'https://cdn.pixabay.com/photo/2016/12/21/17/11/signe-1923369_960_720.png';
 
-
+//TODO move calles to backend to separate file
 const getImg = async(name) => {
-  let result = PIXABAY_PLUS_SIGN;
+  let result = DEFAULT_IMG;
   if(true){
     const axiosRes = await axios.get(`http://localhost:3000/getImg/`+ name);
     result = axiosRes.data;
@@ -17,8 +17,9 @@ const getImg = async(name) => {
   return result;
 }
 
+//TODO move calles to backend to separate file
 const getImgsGallery = async(name) => {
-  let result = [PIXABAY_PLUS_SIGN];
+  let result = [DEFAULT_IMG];
   if(true){
     const axiosRes = await axios.get(`http://localhost:3000/getImgsGallery/`+ name);
     result = axiosRes.data;
@@ -26,6 +27,8 @@ const getImgsGallery = async(name) => {
   return result;
 }
 
+
+//TODO move modal to a separate file
 const Modal = ({ handleClose, handleSelectImg, show, imgs }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
 
@@ -69,21 +72,21 @@ const TodoImg = ({ todo , setTodoImg }) => {
       })
   }, []);
 
+  //TODO move the bellow css in img to CSS file
   return(
     <div className="todo-item-img">
-      <img className='todo-item-img' src={todo.imgSrc} width='120px' onClick={openModal}/>
+      <img className='todo-item-img' src={todo.imgSrc} width='120px' onClick={openModal}/>  
       <Modal show={modalIsOpen} handleClose={closeModal} handleSelectImg={handleSelectImg} imgs={todoImgs} />
     </div>
   )
 };
 
-
+//TODO dont listen to all todos, just to this one
 const mapStateToProps = state => {
   const todos = getTodos(state);
   return { todos };
 };
 
-// export default Todo;
 export default connect(
   mapStateToProps,
   { setTodoImg }

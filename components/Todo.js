@@ -23,7 +23,6 @@ const Todo = ({ todo, toggleTodo, removeTodo }) => {
   )
 };
 
-// export default Todo;
 export default connect(
   null,
   { toggleTodo, removeTodo }

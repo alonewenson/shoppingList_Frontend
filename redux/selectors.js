@@ -10,11 +10,7 @@ export const getTodoById = (store, id) =>
 export const getTodoImg = (store, id) => 
   getTodosState(store) ? getTodoById(store, id).imgSrc : '';
 
-
-/**
- * example of a slightly more complex selector
- * select from store combining information from multiple reducers
- */
+// TODO this function seems redundant, why map the ids and not call getTodoById directly?
 export const getTodos = store =>
   getTodoList(store).map(id => getTodoById(store, id));
 

@@ -11,9 +11,11 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <h1>Todo List</h1>
-        <AddTodo />
-        <TodoList />
+        <div className='todo-app'>
+          <h1>Todo List</h1>
+          <AddTodo />
+          <TodoList />
+        </div>
       </Provider>
     );
   }

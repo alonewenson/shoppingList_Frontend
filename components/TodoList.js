@@ -4,13 +4,13 @@ import Todo from "./Todo";
 import { getTodos } from "../redux/selectors";
 
 const TodoList = ({ todos }) => (
-  <ul className="todo-list">
+  <div className="todo-list">
     {todos && todos.length
       ? todos.map((todo, index) => {
           return <Todo key={`todo-${todo.id}`} todo={todo} />;
         })
       : "Please add items"}
-  </ul>
+  </div>
 );
 
 const mapStateToProps = state => {

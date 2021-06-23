@@ -1,25 +1,29 @@
 .todo-app {
   font-family: sans-serif;
-  width: 360px;
-  background-color: lightblue;
+  background-image: linear-gradient(to bottom right, lightblue, purple);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-h1 {
+.app-header {
   text-align: center;
+  margin-top: auto;
 }
 
 /** add todo **/
 .add-todo {
   margin-left: 0.5rem;
+  margin-bottom: auto;
 }
 
 /** todo list **/
 .todo-list {
-  margin-top: 1rem;
   text-align: left;
   list-style: none;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 /** todo item **/
@@ -29,14 +33,16 @@ h1 {
   display: flex;
   flex-direction: row;
   height: 100px;
-  margin: 2px
+  margin: 2px;
+  border-radius: 25px;
 }
 
 .todo-content {
   opacity: 1;
   display: flex;
-  justify-content: center;
+  justify-content: left center;
   align-items: center;
+  flex: 1;
 }
 
 .todo-content-completed {
@@ -45,21 +51,29 @@ h1 {
 }
 
 .todo-item-text{
-  width: 155px;
   font-size: 30px;
+  width: calc(100% - 11 - 85 -100);
   text-align: center;
   word-wrap: break-word;
 }
 
-.todo-item-img{
+.todo-item-img-div{
   width: 100px;
   height: 100%;
   border-right: 1px solid black;
+  display: flex;
+  align-items: center;
+  
+}
+
+.todo-item-img {
+  width: 95%;
+  height: 95%;
+  margin-left: 2px;
 }
 
 .toggle-todo {
   border-left: 1px solid black;
-  border-right: 1px solid black;
   width: 85px;
 }
 
@@ -78,10 +92,6 @@ h1 {
   }
 }
 
-.toggle-todo-img {
-  width: 85px;
-}
-
 .remove-todo {
   width: 11px;
   position: relative;
@@ -89,9 +99,9 @@ h1 {
 
 .remove-todo-img {
   width: 100%;
-     position: absolute;
-    left: 0;
-    bottom: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 
 
@@ -112,6 +122,10 @@ h1 {
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
+}
+
+.todo-item-img-in-modal {
+  width: 50px;
 }
   
 .display-block {

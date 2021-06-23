@@ -35,7 +35,7 @@ const TodoImg = ({ todo , setTodoImg }) => {
   }, []);
 
   return(
-    <div className="todo-item-img">
+    <div className="todo-item-img-div">
       <img className='todo-item-img' src={todo.imgSrc} onClick={openModal}/>  
       <TodoImgModal show={modalIsOpen} handleClose={closeModal} handleSelectImg={handleSelectImg} imgs={todoImgs} />
     </div>

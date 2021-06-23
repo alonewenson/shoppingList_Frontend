@@ -1,6 +1,5 @@
 .todo-app {
   font-family: sans-serif;
-  background-image: linear-gradient(to bottom right, lightblue, purple);
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -9,12 +8,19 @@
 .app-header {
   text-align: center;
   margin-top: auto;
+  background: linear-gradient(#87CEEB, #B9EBFF );
 }
 
 /** add todo **/
 .add-todo {
+  justify-content: center;
+  display: flex;
+  background: linear-gradient( #B9EBFF , #87CEEB);
+  padding-bottom: 0.5rem;
+}
+
+.add-todo-btn {
   margin-left: 0.5rem;
-  margin-bottom: auto;
 }
 
 /** todo list **/
@@ -28,7 +34,6 @@
 
 /** todo item **/
 .todo-item {
-  border: 1px solid black;
   font-family: monospace;
   display: flex;
   flex-direction: row;
@@ -51,6 +56,7 @@
 }
 
 .todo-item-text{
+  font-family: 'Times New Roman', Times, serif;
   font-size: 30px;
   width: calc(100% - 11 - 85 -100);
   text-align: center;
@@ -60,10 +66,9 @@
 .todo-item-img-div{
   width: 100px;
   height: 100%;
-  border-right: 1px solid black;
   display: flex;
   align-items: center;
-  
+  margin-right: 1rem;
 }
 
 .todo-item-img {
@@ -71,16 +76,25 @@
   height: 95%;
   margin-left: 2px;
 }
+.toggle-todo-svg {
+  width: 120%;
+  height: 100%;
+}
+.toggle-todo-checkbox {
+  stroke: black;
+  fill: none;
+  width: 30px; 
+  height: 30px;
+}
 
 .toggle-todo {
-  border-left: 1px solid black;
-  width: 85px;
+  width: 40px;
 }
 
 #check {
   fill: none;
   stroke: green;
-  stroke-width: 15;
+  stroke-width: 5;
   stroke-linecap: round;
   stroke-dasharray: 180;
   stroke-dashoffset: 180;
@@ -93,7 +107,7 @@
 }
 
 .remove-todo {
-  width: 11px;
+  width: 15px;
   position: relative;
 }
 
@@ -126,6 +140,27 @@
 
 .todo-item-img-in-modal {
   width: 50px;
+}
+
+
+.todo-item-text-color-0 {
+  color: red;
+}
+
+.todo-item-text-color-1 {
+  color: orange;
+}
+
+.todo-item-text-color-2 {
+  color: blueviolet;
+}
+
+.todo-item-text-color-3 {
+  color: blue;
+}
+
+.todo-item-text-color-4 {
+  color: green;
 }
   
 .display-block {

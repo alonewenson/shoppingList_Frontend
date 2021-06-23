@@ -12,9 +12,9 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <div className='todo-app'>
-          <div className='app-header'><h1>Todo List</h1></div>
-          <TodoList />
+          <div className='app-header'><p>Shopi-List</p></div>
           <AddTodo />
+          <TodoList />
         </div>
       </Provider>
     );

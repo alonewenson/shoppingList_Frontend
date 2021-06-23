@@ -3,11 +3,13 @@ import { connect } from "react-redux";
 import Todo from "./Todo";
 import { getTodos } from "../redux/selectors";
 
+const nTextColors = 5;
+
 const TodoList = ({ todos }) => (
   <div className="todo-list">
     {todos && todos.length
       ? todos.map((todo, index) => {
-          return <Todo key={`todo-${todo.id}`} todo={todo} />;
+          return <Todo key={`todo-${todo.id}`} todo={todo} textColorIndex={index % nTextColors} />;
         })
       : "Please add items"}
   </div>

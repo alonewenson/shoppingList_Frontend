@@ -1,6 +1,8 @@
 import React from "react";
+import { TextInput , Button, View } from 'react-native';
 import { connect } from "react-redux";
 import { addTodo } from "../redux/actions";
+import { styles } from "../styles";
 
 class AddTodo extends React.Component {
   constructor(props) {
@@ -19,16 +21,14 @@ class AddTodo extends React.Component {
 
   render() {
     return (
-      <div className="add-todo">
-        <input
+      <View style={styles.add_todo}>
+        <TextInput 
           onChange={e => this.updateInput(e.target.value)}
           value={this.state.input}
           placeholder='add item'
         />
-        <button className='add-todo-btn' onClick={this.handleAddTodo}>
-          +
-        </button>
-      </div>
+        <Button style={styles.add_todo_btn} onClick={this.handleAddTodo} title='+' />
+      </View>
     );
   }
 }

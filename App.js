@@ -1,4 +1,5 @@
 import React from "react";
+import { Text , View } from 'react-native'
 
 import { Provider } from "react-redux";
 import store from "./redux/store";
@@ -11,11 +12,11 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <div className='todo-app'>
-          <div className='app-header'><p>Shopi-List</p></div>
+        <View className='todo-app'>
+          <View className='app-header'><Text>Shopi-List</Text></View>
           <AddTodo />
           <TodoList />
-        </div>
+        </View>
       </Provider>
     );
   }

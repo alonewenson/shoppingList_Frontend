@@ -1,10 +1,10 @@
 import React , { useEffect , useState } from "react";
+import { View } from 'react-native'
 import { connect } from "react-redux";
 import { setTodoImg } from "../redux/actions";
 import { getTodoById } from "../redux/selectors";
 import { TodoImgModal } from "./TodoImgModal";
 import { getImg , getImgsGallery } from "../server_portal/ServerImages";
-import '../styles.css';
 
 const TodoImg = ({ todo , setTodoImg }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -35,10 +35,10 @@ const TodoImg = ({ todo , setTodoImg }) => {
   }, []);
 
   return(
-    <div className="todo-item-img-div">
+    <View className="todo-item-img-div">
       <img className='todo-item-img' src={todo.imgSrc} onClick={openModal}/>  
       <TodoImgModal show={modalIsOpen} handleClose={closeModal} handleSelectImg={handleSelectImg} imgs={todoImgs} />
-    </div>
+    </View>
   )
 };
 

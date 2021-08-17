@@ -1,20 +1,20 @@
 import React from "react";
-import { Text , View } from 'react-native'
+import { ScrollView, Text , View } from 'react-native'
 import { connect } from "react-redux";
 import Todo from "./Todo";
 import { getTodos } from "../redux/selectors";
-
+import { styles } from "../styles";
 
 const nTextColors = 5;
 
 const TodoList = ({ todos }) => (
-  <View className="todo-list">
+  <ScrollView  style={styles.todo_list}>
     {todos && todos.length
       ? todos.map((todo, index) => {
           return <Todo key={`todo-${todo.id}`} todo={todo} textColorIndex={index % nTextColors} />;
         })
-      : <Text>"Please add items"</Text>}
-  </View>
+      : <Text>List is empty</Text>}
+  </ScrollView>
 );
 
 const mapStateToProps = state => {

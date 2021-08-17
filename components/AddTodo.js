@@ -23,11 +23,12 @@ class AddTodo extends React.Component {
     return (
       <View style={styles.add_todo}>
         <TextInput 
+          style={styles.add_todo_input}
           onChange={e => this.updateInput(e.target.value)}
           value={this.state.input}
-          placeholder='add item'
+          placeholder='please add item'
         />
-        <Button style={styles.add_todo_btn} onClick={this.handleAddTodo} title='+' />
+        <Button style={styles.add_todo_btn} onPress={this.handleAddTodo} title='+' />
       </View>
     );
   }

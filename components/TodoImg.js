@@ -1,5 +1,5 @@
 import React , { useEffect , useState } from "react";
-import { View, Image } from 'react-native'
+import { View, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { connect } from "react-redux";
 import { setTodoImg } from "../redux/actions";
 import { getTodoById } from "../redux/selectors";
@@ -36,9 +36,18 @@ const TodoImg = ({ todo , setTodoImg }) => {
   }, []);
 
   return(
-    <View style={styles.todo_img_div} className="todo_img_div">
-      <Image style={styles.todo_img} className='todo_img' source={todo.imgSrc} onClick={openModal}/>  
-      <TodoImgModal show={modalIsOpen} handleClose={closeModal} handleSelectImg={handleSelectImg} imgs={todoImgs} />
+    <View >
+      {
+        todo.imgSrc  !== undefined ?
+          <TouchableOpacity style={styles.todo_img_div} onPress={openModal}>
+            <Image style={styles.todo_img} source={{ uri: todo.imgSrc }}/>  
+          </TouchableOpacity> 
+          :
+          <View style={styles.todo_img_div}>
+            <ActivityIndicator size="large"  color="#0000ff" />
+          </View>
+      }
+      {/* <TodoImgModal show={modalIsOpen} handleClose={closeModal} handleSelectImg={handleSelectImg} imgs={todoImgs} /> */}
     </View>
   )
 };

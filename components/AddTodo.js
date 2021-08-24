@@ -24,7 +24,7 @@ class AddTodo extends React.Component {
       <View style={styles.add_todo}>
         <TextInput 
           style={styles.add_todo_input}
-          onChange={e => this.updateInput(e.target.value)}
+          onChangeText={this.updateInput}
           value={this.state.input}
           placeholder='please add item'
         />

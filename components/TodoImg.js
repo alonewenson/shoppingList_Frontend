@@ -3,7 +3,6 @@ import { View, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { connect } from "react-redux";
 import { setTodoImg } from "../redux/actions";
 import { getTodoById } from "../redux/selectors";
-import { TodoImgModal } from "./TodoImgModal";
 import { getImg , getImgsGallery } from "../server_portal/ServerImages";
 import { styles } from "../styles";
 
@@ -20,14 +19,6 @@ const TodoImg = ({ todo , setTodoImg }) => {
     }
     setIsOpen(true);
   }
-  const closeModal =() => {
-    setIsOpen(false);
-  }
-
-  const handleSelectImg = newImgSrc => {
-    setTodoImg(todo.id, newImgSrc);
-    setIsOpen(false);
-  }
 
   useEffect(() => {
     getImg(todo.content).then(res => {
@@ -40,14 +31,13 @@ const TodoImg = ({ todo , setTodoImg }) => {
       {
         todo.imgSrc  !== undefined ?
           <TouchableOpacity style={styles.todo_img_div} onPress={openModal}>
-            <Image style={styles.todo_img} source={{ uri: todo.imgSrc }}/>  
+            <Image style={styles.todo_img} source={{ uri: todo.imgSrc }} resizeMode="contain"/>  
           </TouchableOpacity> 
           :
           <View style={styles.todo_img_div}>
             <ActivityIndicator size="large"  color="#0000ff" />
           </View>
       }
-      {/* <TodoImgModal show={modalIsOpen} handleClose={closeModal} handleSelectImg={handleSelectImg} imgs={todoImgs} /> */}
     </View>
   )
 };

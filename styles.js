@@ -86,8 +86,8 @@ export const styles = StyleSheet.create({
   },
   
   todo_img: {
-    width: '95%',
-    height: '95%'
+    flex: 1,
+    width: '98%'
   },
 
   control_todo: {

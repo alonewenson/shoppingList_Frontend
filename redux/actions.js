@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, SET_TODO_IMG } from "./actionTypes";
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, SET_TODO_IMG, OPEN_MODAL, CLOSE_MODAL } from "./actionTypes";
 
 let nextTodoId = 0;
 
@@ -28,5 +28,15 @@ export const setTodoImg = (id, imgSrc) => ({
   }
 })
 
+export const openModal = (id) => ({
+  type: OPEN_MODAL,
+  payload: {
+    id: id
+  }
+})
+
+export const closeModal = () => ({
+  type: CLOSE_MODAL
+})
 
 

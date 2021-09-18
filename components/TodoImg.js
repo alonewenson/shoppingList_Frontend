@@ -1,7 +1,7 @@
 import React , { useEffect , useState } from "react";
 import { View, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { connect } from "react-redux";
-import { setTodoImg } from "../redux/actions";
+import { setTodoImg, openModal } from "../redux/actions";
 import { getTodoById } from "../redux/selectors";
 import { getImg , getImgsGallery } from "../server_portal/ServerImages";
 import { styles } from "../styles";
@@ -10,14 +10,8 @@ const TodoImg = ({ todo , setTodoImg }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [todoImgs, setTodoImgs] = useState([]);
 
-  const openModal = () => {
-    if(todoImgs.length === 0)
-    {
-      getImgsGallery(todo.content).then( res => {
-        setTodoImgs(res)
-      })
-    }
-    setIsOpen(true);
+  const handleOpenModal = () => {
+    openModal(todo.id);
   }
 
   useEffect(() => {
@@ -30,7 +24,7 @@ const TodoImg = ({ todo , setTodoImg }) => {
     <View >
       {
         todo.imgSrc  !== undefined ?
-          <TouchableOpacity style={styles.todo_img_div} onPress={openModal}>
+          <TouchableOpacity style={styles.todo_img_div} onPress={handleOpenModal}>
             <Image style={styles.todo_img} source={{ uri: todo.imgSrc }} resizeMode="contain"/>  
           </TouchableOpacity> 
           :

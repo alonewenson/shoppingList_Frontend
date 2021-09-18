@@ -6,6 +6,7 @@ import store from "./redux/store";
 
 import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
+import TodoImgModal from "./components/TodoImgModal";
 import { styles } from "./styles";
 
 export default class App extends React.Component {
@@ -18,6 +19,7 @@ export default class App extends React.Component {
           </View>
           <TodoList />
           <AddTodo />
+          <TodoImgModal />
         </View>
       </Provider>
     );

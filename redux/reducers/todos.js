@@ -1,8 +1,9 @@
-import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, SET_TODO_IMG } from "../actionTypes";
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, SET_TODO_IMG, OPEN_MODAL, CLOSE_MODAL } from "../actionTypes";
 
 const initialState = {
   allIds: [],
-  byIds: {}
+  byIds: {},
+  modalsTodo: null
 };
 
 export default function(state = initialState, action) {
@@ -65,7 +66,20 @@ export default function(state = initialState, action) {
         }
       };
     }
-    
+    case OPEN_MODAL: {
+      const { id } = action.payload;
+      return {
+        ...state,
+        modalsTodo: id
+      };
+    }
+    case CLOSE_MODAL: {
+      return {
+        ...state,
+        modalsTodo: null
+      };
+    }
+
     default:
       return state;
   }

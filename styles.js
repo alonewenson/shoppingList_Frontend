@@ -1,4 +1,4 @@
-import { StyleSheet, StatusBar } from 'react-native';
+import { StyleSheet, StatusBar, Modal } from 'react-native';
 
 export const styles = StyleSheet.create({
   todo_app: {
@@ -109,5 +109,21 @@ export const styles = StyleSheet.create({
     width: null,
     height: null,
     resizeMode: 'contain'
+  },
+
+  modal: {
+    margin: 0,
+    backgroundColor: 'rgba(0,0,0,.6)',
+    alignItems: "center",
+  },
+
+  modal_view:{
+    height: '85%',
+    width: '85%',
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 20,
+    borderColor: "black"
   }
 })

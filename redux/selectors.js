@@ -13,3 +13,8 @@ export const getTodoImg = (store, id) =>
 export const getTodos = store =>
   getTodoList(store).map(id => getTodoById(store, id));
 
+export const getModalsSelectedTodoId = store => store.modalsTodo;
+
+
+
+

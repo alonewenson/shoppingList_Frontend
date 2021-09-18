@@ -9,7 +9,7 @@ import { styles } from "../styles";
 const Todo = ({ todo, toggleTodo, removeTodo, textColorIndex }) => {
   return(
     <View style={styles.todo_item} className='todo_item'>
-      <View style={styles.todo_content(todo.completed)} className={'todo_content ' + (todo.completed ? 'todo_content_completed': '')}>
+      <View style={styles.todo_content(todo.completed)}>
         <TodoImg style={styles.todo_img_wraper} key={`todo_img-${todo.id}`} todo={todo} /> 
         
         <Text style={styles.todo_text} numberOfLines={1}  >{todo.content}</Text>

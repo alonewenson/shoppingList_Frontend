@@ -6,7 +6,7 @@ import { getTodoById } from "../redux/selectors";
 import { getImg , getImgsGallery } from "../server_portal/ServerImages";
 import { styles } from "../styles";
 
-const TodoImg = ({ todo , setTodoImg }) => {
+const TodoImg = ({ todo , setTodoImg , openModal}) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [todoImgs, setTodoImgs] = useState([]);
 
@@ -23,7 +23,7 @@ const TodoImg = ({ todo , setTodoImg }) => {
   return(
     <View >
       {
-        todo.imgSrc  !== undefined ?
+        todo.imgSrc !== undefined ?
           <TouchableOpacity style={styles.todo_img_div} onPress={handleOpenModal}>
             <Image style={styles.todo_img} source={{ uri: todo.imgSrc }} resizeMode="contain"/>  
           </TouchableOpacity> 
@@ -43,6 +43,6 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  { setTodoImg }
+  { setTodoImg, openModal }
 )(TodoImg);
 

@@ -3,19 +3,18 @@ import { Text, TouchableOpacity, View , SectionList, Image } from 'react-native'
 import Modal from 'react-native-modal'
 import { connect } from "react-redux";
 import { setTodoImg, closeModal } from "../redux/actions";
-import { getModalsSelectedTodoId } from "../redux/selectors";
+import { getModalsSelectedTodoId, getTodoById } from "../redux/selectors";
 import { getImgsGallery } from "../server_portal/ServerImages";
 import { styles } from "../styles";
 
- const TodoImgModal = ({ todoId, closeModal }) => {
-  console.log('TodoImgModal id ' +todoId);
-  todoId = 1;
-  const isModalVisible = todoId ? true : false;
+ const TodoImgModal = ({ todo, closeModal }) => {
+  console.log(todo.id);
+  const isModalVisible = todo.id ? true : false;
   const [todoImgs, setTodoImgs] = useState([]);
   const [lastTodoId, setLastTodoId] = useState(0);
 
-  if (todoId !== lastTodoId){
-    setLastTodoId(todoId);
+  if (todo.id !== lastTodoId){
+    setLastTodoId(todo.id);
     getImgsGallery('banana').then(res => {
         setTodoImgs(res);
       })
@@ -28,13 +27,13 @@ import { styles } from "../styles";
       style={styles.modal}
     >
       <View style={styles.modal_view}>
-        <Text>Please select an Image {todoId}</Text>
+        <Text>Please select an Image {todo.content}</Text>
         <SectionList className="modal-main">
           {todoImgs.map( (value , index ) => 
-            <Image className='todo-item-img-in-modal' key={'todo-item-img-option_'+index} source={{ uri: value }} width='120px' onClick={() => handleSelectImg(value)}/>
+            <Image key={'modal-img-option_'+index} source={{ uri: value }} width='120px' onClick={() => handleSelectImg(value)}/>
             )}
             </SectionList>
-            <TouchableOpacity style={styles.todo_img_div} onPress={closeModal}>
+            <TouchableOpacity onPress={closeModal}>
               <Text> Close Modal</Text>
             </TouchableOpacity>
       </View>
@@ -44,12 +43,11 @@ import { styles } from "../styles";
 
 const mapStateToProps = (state) => {
   const todoId = getModalsSelectedTodoId(state);
-  console.log('TodoImgModal mapStateToProps');
-  return { todoId };
+  const todo = getTodoById(state, todoId);
+  return { todo };
 };
 
 export default connect(
-  mapStateToProps
-  ,
-  { closeModal}
+  mapStateToProps,
+  { closeModal }
 )(TodoImgModal);

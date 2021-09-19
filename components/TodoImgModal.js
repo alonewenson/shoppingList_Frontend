@@ -7,15 +7,19 @@ import { getModalsSelectedTodoId, getTodoById } from "../redux/selectors";
 import { getImgsGallery } from "../server_portal/ServerImages";
 import { styles } from "../styles";
 
- const TodoImgModal = ({ todo, closeModal }) => {
-  console.log(todo.id);
+ const TodoImgModal = ({ todo, closeModal, setTodoImg }) => {
   const isModalVisible = todo.id ? true : false;
   const [todoImgs, setTodoImgs] = useState([]);
   const [lastTodoId, setLastTodoId] = useState(0);
 
-  if (todo.id !== lastTodoId){
+  const handleSelectImg = ( src ) => {
+    setTodoImg(todo.id, src);
+    closeModal();
+  }
+
+  if (todo.id && todo.id !== lastTodoId){
     setLastTodoId(todo.id);
-    getImgsGallery('banana').then(res => {
+    getImgsGallery(todo.content).then(res => {
         setTodoImgs(res);
       })
   };
@@ -27,15 +31,30 @@ import { styles } from "../styles";
       style={styles.modal}
     >
       <View style={styles.modal_view}>
-        <Text>Please select an Image {todo.content}</Text>
-        <SectionList className="modal-main">
+        <View style={styles.modal_header}>
+          <View style={{ flex: 1 }}>
+            <Text>Please select an Image for {todo.content}</Text>
+          </View>
+          <TouchableOpacity style={styles.remove_todo_div} onPress={closeModal}>
+            <Image style={styles.remove_todo_img}
+                source= {require('../assets/delete-button.png')}/>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.modal_img_selection}>
           {todoImgs.map( (value , index ) => 
-            <Image key={'modal-img-option_'+index} source={{ uri: value }} width='120px' onClick={() => handleSelectImg(value)}/>
-            )}
-            </SectionList>
-            <TouchableOpacity onPress={closeModal}>
-              <Text> Close Modal</Text>
+          // <View style={{height: 90, width: 90, backgroundColor:'blue', borderColor: 'black', margin: 8}}>
+          //   <Text>{index}</Text>
+          // </View>
+            <TouchableOpacity style={styles.modal_img} key={'modal-img-btn_'+index} onPress={() => handleSelectImg(value)}>
+              <Image 
+              style={{flex: 1}}
+                key={'modal-img_'+index} 
+                resizeMode="contain"
+                source={{ uri: value }}/>
             </TouchableOpacity>
+          )}
+           
+        </View>
       </View>
     </Modal>
   );
@@ -49,5 +68,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { closeModal }
+  { closeModal, setTodoImg }
 )(TodoImgModal);

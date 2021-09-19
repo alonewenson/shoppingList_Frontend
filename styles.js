@@ -21,9 +21,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor : '#B9EBFF',
     flexDirection: 'row',
-    height: 50,
-    borderWidth: 1,
-    borderColor: 'black'
+    height: 50
   },
   
   add_todo_input: {
@@ -44,38 +42,26 @@ export const styles = StyleSheet.create({
     fontFamily: 'monospace',
     flexDirection: 'row',
     height: 100,
-    margin: 2,
-    borderWidth: 1,
-    borderColor: 'black'
+    marginLeft: 20,
+    marginRight: 20
   },
 
   todo_content: (isCompleted = true) => ({
-    opacity: 1,
     alignItems: 'center',
     flexDirection: 'row',
-    borderColor: 'black',
     flex: 3,
     opacity: isCompleted ? 0.2 : 1,
   }),
 
-  // todo_content_completed: {
-  //   transition: 'opacity 1s ease-in-out',
-  //   opacity: '0.2'
-  // },
-  
   todo_text: {
     fontSize: 30,
     flex: 1,
-    textAlign: 'left',
-    marginLeft: 3,  
-    borderWidth: 1,
-    borderColor: 'black'
+    textAlign: 'center',
+    marginRight: 15
   },
 
   todo_img_wraper:{
-    flex:1,
-    borderWidth: 1,
-    borderColor: 'black'
+    flex:1
   },
 
   todo_img_div: {
@@ -83,24 +69,22 @@ export const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    margin: 3
   },
   
   todo_img: {
     flex: 1,
-    width: '98%'
+    width: '100%'
   },
 
   control_todo: {
     width: 30,
-    alignItems: 'center',
-    justifyContent: 'space-between'
+    alignItems: 'center'
   },
 
   remove_todo_div: {
     width: 20,
     height: 20,
-    borderWidth: 1,
-    borderColor: 'black',
     margin: 5
   },
 
@@ -117,13 +101,33 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
 
+  modal_header: {
+    flex: 1, 
+    marginLeft: 15, 
+    marginRight: 5, 
+    justifyContent: "center", 
+    flexDirection:'row', 
+    justifyContent: 'space-between' ,
+    alignItems: 'center'
+  },
   modal_view:{
     height: '85%',
     width: '85%',
     backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 20,
-    borderColor: "black"
+    borderRadius: 20
+  },
+  modal_img_selection: {
+    flex: 15, 
+    flexWrap: "wrap", 
+    flexDirection: 'row',
+    padding:5
+  },
+  modal_img: {
+    height: 90, 
+    width: 90,
+    margin: 8,
+    padding: 3
   }
 })

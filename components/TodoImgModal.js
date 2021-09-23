@@ -1,5 +1,5 @@
-import React , { useEffect , useState } from "react";
-import { Text, TouchableOpacity, View , SectionList, Image } from 'react-native'
+import React , { useState } from "react";
+import { Text, TouchableOpacity, View , Image } from 'react-native'
 import Modal from 'react-native-modal'
 import { connect } from "react-redux";
 import { setTodoImg, closeModal } from "../redux/actions";
@@ -41,19 +41,15 @@ import { styles } from "../styles";
           </TouchableOpacity>
         </View>
         <View style={styles.modal_img_selection}>
-          {todoImgs.map( (value , index ) => 
-          // <View style={{height: 90, width: 90, backgroundColor:'blue', borderColor: 'black', margin: 8}}>
-          //   <Text>{index}</Text>
-          // </View>
+          {todoImgs.map( (value , index ) =>
             <TouchableOpacity style={styles.modal_img} key={'modal-img-btn_'+index} onPress={() => handleSelectImg(value)}>
               <Image 
-              style={{flex: 1}}
+                style={{flex: 1}}
                 key={'modal-img_'+index} 
                 resizeMode="contain"
                 source={{ uri: value }}/>
             </TouchableOpacity>
           )}
-           
         </View>
       </View>
     </Modal>

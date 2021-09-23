@@ -1,4 +1,6 @@
 
+export const isChildMode = store => store.todos.isChildMode;
+
 export const getTodosState = store => store.todos;
 
 export const getTodoList = store =>
@@ -14,6 +16,8 @@ export const getTodos = store =>
   getTodoList(store).map(id => getTodoById(store, id));
 
 export const getModalsSelectedTodoId = store => store.todos.modalsTodo;
+
+
 
 
 

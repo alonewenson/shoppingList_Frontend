@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput , Button, View } from 'react-native';
+import { TextInput, View } from 'react-native';
 import { connect } from "react-redux";
 import { addTodo } from "../redux/actions";
 import { styles } from "../styles";
@@ -27,8 +27,9 @@ class AddTodo extends React.Component {
           onChangeText={this.updateInput}
           value={this.state.input}
           placeholder='please add item'
+          maxLength={16}
+          onSubmitEditing={this.handleAddTodo}
         />
-        <Button style={styles.add_todo_btn} onPress={this.handleAddTodo} title='+' />
       </View>
     );
   }

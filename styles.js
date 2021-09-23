@@ -8,13 +8,21 @@ export const styles = StyleSheet.create({
   },
 
   app_header: {
+    flexDirection: 'row',
     textAlign: 'center',
     backgroundColor: '#87CEEB',
     height: 50
   },
 
   app_header_text:{
-    fontSize: 30
+    fontSize: 30,
+    flex: 5
+  },
+
+  child_mode_btn: {
+    fontSize: 30,
+    flex: 1,
+    backgroundColor: 'grey'
   },
 
   add_todo: {
@@ -79,7 +87,8 @@ export const styles = StyleSheet.create({
 
   control_todo: {
     width: 30,
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 
   remove_todo_div: {

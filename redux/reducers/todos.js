@@ -1,9 +1,10 @@
-import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, SET_TODO_IMG, OPEN_MODAL, CLOSE_MODAL } from "../actionTypes";
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, SET_TODO_IMG, OPEN_MODAL, CLOSE_MODAL, TOGGLE_CHILD_MODE } from "../actionTypes";
 
 const initialState = {
   allIds: [],
   byIds: {},
-  modalsTodo: null
+  modalsTodo: null,
+  isChildMode: false
 };
 
 export default function(state = initialState, action) {
@@ -77,6 +78,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         modalsTodo: null
+      };
+    }
+    case TOGGLE_CHILD_MODE: {
+      return {
+        ...state,
+        isChildMode: !state.isChildMode
       };
     }
 

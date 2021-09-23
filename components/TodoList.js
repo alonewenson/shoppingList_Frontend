@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, Text , View } from 'react-native'
+import { ScrollView, Text } from 'react-native'
 import { connect } from "react-redux";
 import Todo from "./Todo";
 import { getTodos } from "../redux/selectors";

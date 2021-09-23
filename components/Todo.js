@@ -1,12 +1,11 @@
 import React from "react";
-import { View, Text, Image , CheckBox, TouchableOpacity } from 'react-native'
-import Svg, { Rect } from 'react-native-svg';
+import { View, Text} from 'react-native'
 import { connect } from "react-redux";
-import { toggleTodo, removeTodo } from "../redux/actions";
 import TodoImg from "./TodoImg";
 import { styles } from "../styles";
+import TodoBtn from "./TodoBtn";
 
-const Todo = ({ todo, toggleTodo, removeTodo, textColorIndex }) => {
+const Todo = ({ todo }) => {
   return(
     <View style={styles.todo_item} className='todo_item'>
       <View style={styles.todo_content(todo.completed)}>
@@ -15,21 +14,13 @@ const Todo = ({ todo, toggleTodo, removeTodo, textColorIndex }) => {
         <Text style={styles.todo_text} numberOfLines={1}  >{todo.content}</Text>
 
       </View>
-      <View style={styles.control_todo}>
-        <CheckBox value={todo.completed} onValueChange={() => toggleTodo(todo.id)} />
-        <TouchableOpacity style={styles.remove_todo_div} onPress={() => {removeTodo(todo.id)}}>
-          <Image  style={styles.remove_todo_img}
-                source= {require('../assets/delete-button.png')}
-                />
-        </TouchableOpacity>
-      </View>
+      <TodoBtn todo={todo}/>
     </View>
   )
 };
 
 export default connect(
-  null,
-  { toggleTodo, removeTodo }
+  null
 )(Todo);
 
 

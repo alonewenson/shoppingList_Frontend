@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, SET_TODO_IMG, OPEN_MODAL, CLOSE_MODAL } from "./actionTypes";
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, SET_TODO_IMG, OPEN_MODAL, CLOSE_MODAL, TOGGLE_CHILD_MODE } from "./actionTypes";
 
 let nextTodoId = 0;
 
@@ -37,6 +37,10 @@ export const openModal = (id) => ({
 
 export const closeModal = () => ({
   type: CLOSE_MODAL
+})
+
+export const toggleChildMode = () => ({
+  type: TOGGLE_CHILD_MODE
 })
 
 

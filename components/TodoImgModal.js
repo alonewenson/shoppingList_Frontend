@@ -4,7 +4,9 @@ import Modal from 'react-native-modal'
 import { connect } from "react-redux";
 import { setTodoImg, closeModal } from "../redux/actions";
 import { getModalsSelectedTodoId, getTodoById } from "../redux/selectors";
-import { getImgsGallery } from "../server_portal/ServerImages";
+import { getImgsGallery } from "../controllers/ImgController";
+import { setImgSrc } from "../controllers/storageController";
+const pluralize = require('pluralize')
 import { styles } from "../styles";
 
  const TodoImgModal = ({ todo, closeModal, setTodoImg }) => {
@@ -14,6 +16,7 @@ import { styles } from "../styles";
 
   const handleSelectImg = ( src ) => {
     setTodoImg(todo.id, src);
+    setImgSrc(pluralize.singular(todo.content.toLowerCase()), src);
     closeModal();
   }
 

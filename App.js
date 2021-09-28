@@ -1,30 +1,44 @@
-import React from "react";
-import { Text , View } from 'react-native'
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import ShoppingListScreen from './components/ShoppingListScreen'
+import HomeScreen from './components/HomeScreen'
+import ChildModeBtn from "./components/ChildModeBtn";
 
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
-import AddTodo from "./components/AddTodo";
-import TodoList from "./components/TodoList";
-import TodoImgModal from "./components/TodoImgModal";
-import { styles } from "./styles";
-import AppHeader from "./components/AppHeader";
+const Stack = createNativeStackNavigator();
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <View style={styles.todo_app}>
-          
-          <AppHeader/>
-          <TodoList />
-          <AddTodo />
-          <TodoImgModal />
-        </View>
-      </Provider>
+const App = () => { 
+   return (   
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen 
+            name="HomeScreen"    
+            component={HomeScreen}     
+            options={{ title: 'HomeScreen' }}    
+          />      
+          <Stack.Screen 
+            name="ShoppingListScreen"
+            component={ShoppingListScreen}
+            options={{ 
+              title: 'Shopping List',
+              headerRight: () => (
+                <ChildModeBtn
+                  onPress={() => alert('This is a button!')}
+                  title="Info"
+                  color="#fff"
+                />  
+              )
+            }} 
+          />    
+        </Stack.Navigator>    
+      </NavigationContainer>
+    </Provider>
     );
-  }
-}
- 
- 
- 
+};
+
+export default App;

@@ -1,9 +1,10 @@
 import React , { useEffect } from "react";
 import { View, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { connect } from "react-redux";
+import store from "../redux/store";
 import { setTodoImg, openModal } from "../redux/actions";
-import { getTodoById } from "../redux/selectors";
-import { getImg } from "../server_portal/ServerImages";
+import { getTodoById, isChildMode } from "../redux/selectors";
+import { getImg } from "../controllers/ImgController";
 import { styles } from "../styles";
 
 const TodoImg = ({ todo , setTodoImg , openModal}) => {
@@ -14,10 +15,16 @@ const TodoImg = ({ todo , setTodoImg , openModal}) => {
       })
   }, []);
 
+  const handleClick = () => {
+    if(!isChildMode(store.getState())){
+      openModal(todo.id)
+    }
+  }
+
   return(
     <View >
       {todo.imgSrc !== undefined ?
-          <TouchableOpacity style={styles.todo_img_div} onPress={() => openModal(todo.id)}>
+          <TouchableOpacity style={styles.todo_img_div} onPress={handleClick}>
             <Image style={styles.todo_img} source={{ uri: todo.imgSrc }} resizeMode="contain"/>  
           </TouchableOpacity> 
           :

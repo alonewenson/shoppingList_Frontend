@@ -2,7 +2,6 @@ import { StyleSheet, StatusBar, Modal } from 'react-native';
 
 export const styles = StyleSheet.create({
   todo_app: {
-    marginTop: StatusBar.currentHeight ,
     fontFamily: 'sans-serif',
     flex: 1,
   },
@@ -10,7 +9,6 @@ export const styles = StyleSheet.create({
   app_header: {
     flexDirection: 'row',
     textAlign: 'center',
-    backgroundColor: '#87CEEB',
     height: 50
   },
 
@@ -19,10 +17,15 @@ export const styles = StyleSheet.create({
     flex: 5
   },
 
+
   child_mode_btn: {
-    fontSize: 30,
-    flex: 1,
-    backgroundColor: 'grey'
+    height: 40,
+    width: 100,
+    backgroundColor: '#f194ff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 25,
+
   },
 
   add_todo: {
@@ -131,12 +134,12 @@ export const styles = StyleSheet.create({
     flex: 15, 
     flexWrap: "wrap", 
     flexDirection: 'row',
-    padding:5
+    paddingHorizontal: 5
   },
   modal_img: {
     height: 90, 
     width: 90,
-    margin: 8,
-    padding: 3
+    marginBottom: 8,
+    marginHorizontal: 8
   }
 })
